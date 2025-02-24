@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Our Products</h2>
+
+
+  <div *ngIf="loading" class="loading">Loading products...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <div *ngIf="!loading && !errorMessage" class="products-grid">
+    <div *ngFor="let product of products" class="product-card">
+      <!-- Clickable image link to product details -->
+      <a [routerLink]="['/product-details', product._id]">
+        <img [src]="product.imageCover" alt="Product Image" class="product-img" />
+      </a>
+      <h3>{{ product.title }}</h3>
+      <p class="brand">Brand: {{ product.brand?.name }}</p>
+      <p class="category">Category: {{ product.category?.name }}</p>
+      <p class="price">Price: {{ product.price }} EGP</p>
+      <p *ngIf="product.discount" class="discount">Discount: {{ product.discount }}%</p>
+
+      <!-- Heart icon, or Add to Cart, etc. -->
+      <i
+        class="fa"
+        [class.fa-heart]="isInWishlist(product)"
+        [class.fa-heart-o]="!isInWishlist(product)"
+        [class.heart-active]="isInWishlist(product)"
+        (click)="toggleWishlist(product)"
+      ></i>
+      <div>
+        <button
+        class="add-cart-btn"
+        [class.cart-active]="isInCart(product)"
+        (click)="toggleCart(product)"
+      >
+        {{ isInCart(product) ? 'Remove from Cart' : 'Add to Cart' }}
+      </button>
+      </div>
+    </div>
+  </div>
+</div>

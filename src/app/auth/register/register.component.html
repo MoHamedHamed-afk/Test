@@ -1,0 +1,51 @@
+<div class="register-container">
+  <h2>Sign Up</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" />
+      <p *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+        Name is required.
+      </p>
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+      <p *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+        Enter a valid email.
+      </p>
+    </div>
+
+    <div>
+      <label for="phone">Phone</label>
+      <input id="phone" type="text" formControlName="phone" />
+      <p *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">
+        Please enter a valid phone number (10–15 digits, optional +).
+      </p>
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" />
+      <p *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        Password is required.
+      </p>
+    </div>
+
+    <div>
+      <label for="rePassword">Confirm Password</label>
+      <input id="rePassword" type="password" formControlName="rePassword" />
+      <p *ngIf="registerForm.errors?.['notMatching']">
+        Passwords do not match.
+      </p>
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid || loading">
+      Register
+    </button>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+  </form>
+
+  <p>Already have an account? <a routerLink="/login">Login here</a></p>
+</div>

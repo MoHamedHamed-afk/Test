@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background: linear-gradient(135deg, #4C585B, #F4EDD3);
+    padding-top: 4rem;
+    font-family: 'Poppins', sans-serif; 
+  }
+
+  header {
+    background-color: #D98324;
+  }
+
+  footer {
+    background-color: #443627;
+  }
+
+  .product-card {
+    @apply bg-[#F2F6D0] rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  
+  button {
+    @apply bg-[#D98324] text-white px-4 py-2 rounded;
+    transition: transform 0.2s, box-shadow 0.3s ease-in-out;
+  }
+
+  button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 117, 140, 0.3);
+    background-color: #443627;
+  }
+
+  button:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 0 5px 10px rgba(255, 117, 140, 0.3);
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 10px rgba(255, 184, 117, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 195, 117, 0.8);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(255, 200, 117, 0.5);
+    }
+  }
+
+  button:hover {
+    animation: pulse 1.5s infinite;
+  }
+}
+

@@ -1,0 +1,33 @@
+<div class="payment-container">
+  <h2 class="payment-header">Payment</h2>
+  
+  <form [formGroup]="paymentForm" (ngSubmit)="proceedToCheckout()">
+    <div class="form-group">
+      <label for="details">Details</label>
+      <input id="details" formControlName="details" type="text" class="form-control">
+      <div *ngIf="paymentForm.get('details')?.invalid && paymentForm.get('details')?.touched" class="error-message">
+        Details are required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input id="phone" formControlName="phone" type="text" class="form-control">
+      <div *ngIf="paymentForm.get('phone')?.invalid && paymentForm.get('phone')?.touched" class="error-message">
+        Phone must be a valid number.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input id="city" formControlName="city" type="text" class="form-control">
+      <div *ngIf="paymentForm.get('city')?.invalid && paymentForm.get('city')?.touched" class="error-message">
+        City is required.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="paymentForm.invalid || loading" class="submit-button">Check Out</button>
+
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  </form>
+</div>

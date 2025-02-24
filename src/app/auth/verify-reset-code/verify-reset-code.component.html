@@ -1,0 +1,9 @@
+<form [formGroup]="verifyResetCodeForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="resetCode">Reset Code:</label>
+    <input id="resetCode" formControlName="resetCode" type="text" required />
+  </div>
+  <button type="submit" [disabled]="verifyResetCodeForm.invalid">Verify Reset Code</button>
+</form>
+<div *ngIf="message">{{ message }}</div>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>

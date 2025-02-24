@@ -1,0 +1,43 @@
+<div *ngIf="loading" class="loading">Loading product details...</div>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+
+<div
+  class="product-details-container"
+  *ngIf="!loading && !errorMessage && product"
+>
+
+  <div class="image-section">
+    <img
+      [src]="product.imageCover"
+      alt="Product Image"
+      class="product-img"
+    />
+  </div>
+
+
+  <div class="info-section">
+    <h2 class="product-title">{{ product.title }}</h2>
+    <p class="brand">Brand: {{ product.brand?.name }}</p>
+    <p class="category">Category: {{ product.category?.name }}</p>
+    <p class="price">Price: {{ product.price }} EGP</p>
+    <p *ngIf="product.discount" class="discount">
+      Discount: {{ product.discount }}%
+    </p>
+
+    <p class="description">{{ product.description }}</p>
+<!-- Buttons -->
+    <div class="buttons">
+<!-- Add to Cart button -->
+    <button
+    class="add-cart-btn"
+    [class.cart-active]="isInCart(product)"
+    (click)="toggleCart(product)"
+  >
+    {{ isInCart(product) ? 'Remove from Cart' : 'Add to Cart' }}
+  </button>
+
+  <!-- Add to Wishlist button -->
+  <button class="add-wishlist-btn" (click)="addToWishlist()">Add to Wishlist</button>
+</div>
+</div>

@@ -1,0 +1,109 @@
+:host {
+    display: block;
+    background: linear-gradient(135deg, #4C585B, #F4EDD3);
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .register-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 3rem auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 2rem;
+  }
+  
+  form div {
+    margin-bottom: 1.2rem;
+    position: relative;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+    font-size: 1rem;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #CA7620;
+  }
+  
+  p {
+    font-size: 0.9rem;
+    color: #d9534f;
+    margin-top: 0.3rem;
+  }
+  
+  button {
+    width: 100%;
+    padding: 0.8rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+  }
+  
+  .error {
+    color: #d9534f;
+    text-align: center;
+    margin-top: 1rem;
+    animation: shake 0.5s ease;
+  }
+  
+  a {
+    color: #337ab7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #23527c;
+  }
+  
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+  }
+ 

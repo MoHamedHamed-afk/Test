@@ -1,0 +1,49 @@
+<header class="navbar">
+  <nav class="container mx-auto px-4 py-1 flex items-center justify-between">
+    <!-- Logo -->
+    <a routerLink="/" class="text-2xl font-bold hover:text-[#EFDCAB]">FreshCart</a>
+    <!-- Navigation Links -->
+    <div class="navbar-menu flex items-center space-x-6">
+      <a routerLink="/products" class="hover:text-[#EFDCAB] transition-colors">Products</a>
+      <!-- Categories Dropdown -->
+      <div class="relative">
+        <a routerLink="/categories" class="hover:text-[#EFDCAB] transition-colors cursor-pointer flex items-center">
+          Categories
+          <i class="fas fa-chevron-down ml-1" (click)="toggleDropdown()"></i>
+        </a>
+        <div *ngIf="dropdownOpen" class="absolute bg-white shadow-lg rounded mt-2">
+          <a routerLink="/products" class="block px-4 py-2 text-gray-800 hover:bg-[#C7741F]" (click)="closeDropdown()">Electronics</a>
+          <a routerLink="/products" class="block px-4 py-2 text-gray-800 hover:bg-[#C7741F]" (click)="closeDropdown()">Fashion</a>
+          <a routerLink="/products" class="block px-4 py-2 text-gray-800 hover:bg-[#C7741F]" (click)="closeDropdown()">Home</a>
+          <a routerLink="/products" class="block px-4 py-2 text-gray-800 hover:bg-[#C7741F]" (click)="closeDropdown()">Beauty</a>
+          <a routerLink="/products" class="block px-4 py-2 text-gray-800 hover:bg-[#C7741F]" (click)="closeDropdown()">Sports</a>
+        </div>
+      </div>
+      <a routerLink="/brands" class="hover:text-[#EFDCAB] transition-colors">Brands</a>
+      <ng-container *ngIf="isLoggedIn; else guestLinks">
+        <!-- Authenticated User -->
+        <a routerLink="/wishlist" class="hover:text-[#EFDCAB] transition-colors">Wishlist <i class="fa fa-heart "></i></a>
+        <a (click)="logout()" class="cursor-pointer hover:text-[#EFDCAB] transition-colors">Logout</a>
+      </ng-container>
+      <ng-template #guestLinks>
+        <!-- Guest User -->
+        <a routerLink="/login" class="hover:text-[#EFDCAB] transition-colors">Login</a>
+        <a routerLink="/register" class="hover:text-[#EFDCAB] transition-colors">Sign Up</a>
+      </ng-template>
+    </div>
+    <!-- Search Bar -->
+    <div class="flex items-center space-x-4">
+      <input type="text" placeholder="Search..." class="search-input px-4 py-2 rounded" />
+      <button class="search-button bg-[#D98324] text-white px-4 py-2 rounded">Search</button>
+    </div>
+    <!-- Cart Icon -->
+    <div class="flex items-center space-x-6">
+      <div class="relative">
+        <i class="fas fa-shopping-cart text-xl" routerLink="/cart"></i>
+        <span *ngIf="isLoggedIn && cartCount > 0" class="absolute -top-2 -right-2 bg-[#443627] text-xs w-5 h-5 rounded-full flex items-center justify-center">
+          {{ cartCount }}
+        </span>
+      </div>
+    </div>
+  </nav>
+</header>

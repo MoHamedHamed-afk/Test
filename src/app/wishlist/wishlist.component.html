@@ -1,0 +1,28 @@
+<div class="wishlist-container">
+  <h2 class="wishlist-header">My Wishlist</h2>
+
+  <!-- Loading & Error -->
+  <div *ngIf="loading" class="loading">Loading wishlist...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <!-- Wishlist Items -->
+  <div class="wishlist-items" *ngIf="!loading && !errorMessage">
+    <div class="wishlist-item" *ngFor="let item of wishlistItems">
+      <img [src]="item.imageCover" alt="Wishlist Product" />
+      <h3>{{ item.title }}</h3>
+      <p class="price">Price: {{ item.price }} EGP</p>
+
+      <!-- Remove from wishlist -->
+      <button class="remove-btn" (click)="removeItem(item._id)">Remove</button>
+
+      <!-- Add to Cart button -->
+      <button
+        class="add-cart-btn"
+        [class.cart-active]="isInCart(item)"
+        (click)="toggleCart(item)"
+      >
+        {{ isInCart(item) ? 'Remove from Cart' : 'Add to Cart' }}
+      </button>
+    </div>
+  </div>
+</div>

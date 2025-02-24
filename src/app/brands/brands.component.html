@@ -1,0 +1,65 @@
+<div class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-8 text-center">Shop by Brand</h1>
+  
+    @if (loading) {
+      <div class="text-center">Loading brands...</div>
+    }
+    @else if (error) {
+      <div class="text-red-500 text-center">Error loading brands!</div>
+    }
+    @else {
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+        @for (brand of brands; track brand._id) {
+          <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow duration-300">
+            <div class="relative group cursor-pointer" (click)="openModal(brand)">
+              <div class="aspect-w-1 aspect-h-1">
+                <img 
+                  [src]="brand.image" 
+                  [alt]="brand.name" 
+                  class="w-full h-32 object-contain p-2"
+                >
+              </div>
+              <div class="mt-2 text-center">
+                <h3 class="font-medium text-gray-700">{{ brand.name }}</h3>
+                @if (brand.productsCount) {
+                  <p class="text-sm text-gray-500">{{ brand.productsCount }} products</p>
+                }
+              </div>
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-5 transition-opacity rounded-lg"></div>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  
+    <!-- Brand Details Modal -->
+    @if (selectedBrand) {
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+         (click)="closeModal()">
+      <div class="bg-white rounded-lg max-w-2xl w-full p-6 mx-2" (click)="$event.stopPropagation()">
+        <div class="flex flex-col md:flex-row gap-6">
+          <!-- Brand Image -->
+          <div class="md:w-1/2 flex items-center">
+            <img [src]="selectedBrand.image" 
+                 [alt]="selectedBrand.name"
+                 class="w-full h-64 object-contain">
+          </div>
+          
+          <!-- Brand Info -->
+          <div class="md:w-1/2 flex flex-col justify-center">
+            <h2 class="text-2xl font-bold mb-2">{{ selectedBrand.name }}</h2>
+            @if (selectedBrand.productsCount) {
+              <p class="text-gray-600 mb-4">
+                {{ selectedBrand.productsCount }} products available
+              </p>
+            }
+            <button (click)="closeModal()"
+                    class="mt-4 text-white px-6 py-2 rounded-lg">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
