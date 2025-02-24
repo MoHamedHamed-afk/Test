@@ -21,7 +21,7 @@
 .navbar-menu {
   display: flex;
   align-items: center;
-  space-x-6;
+  gap: 1rem;
 }
 
 .navbar-menu a {
@@ -125,11 +125,6 @@
 .text-gray-800 {
   color: #2d3748;
 }
-
-.hover\:bg-[#EFDCAB]:hover {
-  background-color: #EFDCAB;
-}
-
 
 /* navbar fixing on mobile screens */
 @media (max-width: 768px) {
